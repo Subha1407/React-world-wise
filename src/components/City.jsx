@@ -1,17 +1,28 @@
+import { useNavigate, useParams } from "react-router-dom";
+import { formatDate } from "../utility/utilities";
 import styles from "./City.module.css";
+import { useCities } from "../context/CitiesContext";
+import { useEffect } from "react";
+import { Spinner } from "./Spinner";
 
 
-function City() {
+export function City() {
+  const {id} = useParams();
   // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  const {currentCity, getCity, isLoading} = useCities();
 
   const { cityName, emoji, date, notes } = currentCity;
 
+  const navigate = useNavigate();
+  console.log(navigate);
+
+  useEffect(function() {
+    getCity(id)
+  }, [id])
+
+  if (isLoading) {
+    return <Spinner/>
+  }
   return (
     <div className={styles.city}>
       <div className={styles.row}>
@@ -45,10 +56,10 @@ function City() {
       </div>
 
       <div>
-        <ButtonBack />
+        {/* <ButtonBack /> */}
+        <button onClick={(e) => {e.preventDefault(); navigate(-1)}}>&larr; Back</button>
       </div>
     </div>
   );
 }
 
-export default City;

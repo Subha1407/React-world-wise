@@ -2,8 +2,10 @@ import styles from './CityList.module.css';
 import { CityItem } from './CityItem';
 import { Message } from './Message';
 import { Spinner } from './Spinner';
+import { useCities } from '../context/CitiesContext';
 
-export function CityList({cities, isLoading}) {
+export function CityList() {
+    const {cities, isLoading} = useCities();
     if(isLoading) {
         return <Spinner/>
     }
