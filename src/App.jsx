@@ -9,6 +9,7 @@ import './App.css'
 import { CountryList } from './components/CountryList'
 import { CitiesProvider } from './context/CitiesContext'
 import { City } from './components/City'
+import { Form } from './components/Form'
 
 export function App() {
 
@@ -21,6 +22,7 @@ export function App() {
         <Route path='countries' element={<CountryList/>}/>
         <Route path='cities' element={<CityList/>}/>
         <Route path='cities/:id' element={<City/>}></Route>
+        <Route path='form' element={<Form/>}></Route>
       </Route>
       <Route path='/pricing' element={<Pricing/>}></Route>
       <Route path='/product' element={<Product/>}></Route>

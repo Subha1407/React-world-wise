@@ -14,7 +14,6 @@ export function City() {
   const { cityName, emoji, date, notes } = currentCity;
 
   const navigate = useNavigate();
-  console.log(navigate);
 
   useEffect(function() {
     getCity(id)
